@@ -1,4 +1,4 @@
-Refer to [./src/index.tsx]()
+Refer to [src/index.tsx](src/index.tsx)
 
 Why does the component not infer type the same way that the hook does?
 

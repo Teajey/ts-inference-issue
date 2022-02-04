@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-function useThing<T = any, U = any>({
-  something,
-  callback,
-}: {
+type ThingProps<T, U> = {
   something: T;
   callback: (a: T) => U;
-}) {
+};
+
+function useThing<T = any, U = any>({ something, callback }: ThingProps<T, U>) {
   return callback(something);
 }
 
@@ -15,9 +14,7 @@ function ThingComponent<T = any, U = any>({
   something,
   callback,
   children,
-}: {
-  something: T;
-  callback: (a: T) => U;
+}: ThingProps<T, U> & {
   children: (r: U) => JSX.Element;
 }) {
   const result = useThing({ something, callback });

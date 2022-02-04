@@ -6,11 +6,11 @@ type ThingProps<T, U> = {
   callback: (a: T) => U;
 };
 
-function useThing<T = any, U = any>({ something, callback }: ThingProps<T, U>) {
+function useThing<T, U>({ something, callback }: ThingProps<T, U>) {
   return callback(something);
 }
 
-function ThingComponent<T = any, U = any>({
+function ThingComponent<T, U>({
   something,
   callback,
   children,

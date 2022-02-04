@@ -14,7 +14,7 @@ function App() {
 }
 ```
 
-When I mouseover `callback` on the hook call I see the correct type inference:
+In the App definition shown above, when I mouseover `callback` on the hook call I see the correct type inference:
 
 ```
 (property) callback: (a: number) => string
@@ -23,7 +23,7 @@ When I mouseover `callback` on the hook call I see the correct type inference:
 However mousing over the same argument on ThingComponent, the return type is not inferred:
 
 ```
-(JSX attribute) callback: (a: number) => any
+(JSX attribute) callback: (a: number) => unknown
 ```
 
 It would be really useful if I could get the component to make the same inference...

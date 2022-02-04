@@ -17,7 +17,7 @@ function ThingComponent<T, U>({
 }: ThingProps<T, U> & {
   children: (r: U) => JSX.Element;
 }) {
-  const result = useThing({ something, callback });
+  const result = callback(something);
   return <div>{children(result)}</div>;
 }
 

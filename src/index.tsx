@@ -4,31 +4,22 @@ import ReactDOM from "react-dom";
 type ThingProps<T, U> = {
   something: T;
   callback: (a: T) => U;
+  callback2?: (r: U) => U;
 };
 
-function useThing<T, U>({ something, callback }: ThingProps<T, U>) {
-  return callback(something);
-}
-
-function ThingComponent<T, U>({
-  something,
-  callback,
-  children,
-}: ThingProps<T, U> & {
-  children: (r: U) => JSX.Element;
-}) {
-  const result = useThing({ something, callback });
-  return <div>{children(result)}</div>;
+function thing<T, U>({ something, callback, callback2 }: ThingProps<T, U>) {
+  const result = callback(something);
+  return callback2?.(result);
 }
 
 function App() {
-  useThing({ something: 1, callback: (s) => s + "1" });
+  thing({
+    something: 1,
+    callback: (s) => s + "1",
+    callback2: (r) => r,
+  });
 
-  return (
-    <ThingComponent something={1} callback={(s) => s + "1"}>
-      {(r) => <div>{r}</div>}
-    </ThingComponent>
-  );
+  return null;
 }
 
 ReactDOM.render(
